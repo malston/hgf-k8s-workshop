@@ -3,3 +3,6 @@ image:
 
 persistence:
   size: 1Gi
+  storageClassName: "thin-disk"
+  annotations:
+    volume.beta.kubernetes.io/storage-class: thin-disk

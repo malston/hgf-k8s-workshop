@@ -103,7 +103,7 @@ Save node identity cryptographic material as secrets:
 
 And install the HLF Orderer Helm chart:
 
-    helm install stable/hlf-ord -n ord1 --namespace orderers -f ../helm_values/ord1.yaml
+    helm install stable/hlf-ord --name ord1 --namespace orderers -f ../helm_values/ord1.yaml
 
 And check that it is running:
 
@@ -117,7 +117,7 @@ And check that it is running:
 
 We start by installing the CouchDB database:
 
-    helm install stable/hlf-couchdb -n cdb-peer1 --namespace peers -f ../helm_values/cdb-peer1.yaml
+    helm install stable/hlf-couchdb --name cdb-peer1 --namespace peers -f ../helm_values/cdb-peer1.yaml
 
 And check that it is running:
 
@@ -141,7 +141,7 @@ Save node identity cryptographic material as secrets:
 
 And install the HLF-Peer Helm Chart:
 
-    helm install stable/hlf-peer -n peer1 --namespace peers -f ../helm_values/peer1.yaml
+    helm install stable/hlf-peer --name peer1 --namespace peers -f ../helm_values/peer1.yaml
 
 And check that it is running:
 
@@ -153,7 +153,7 @@ And check that it is running:
 
 Create the channel
 
-    kubectl exec -n peers $PEER_POD -- peer channel create -o ord1-hlf-ord.orderers.svc.cluster.local:7050 -c mychannel -f /hl_config/channel/mychannel.tx
+    kubectl exec -n peers $PEER_POD -- peer channel create -o ord1-hlf-ord.orderers.svc.cluster.local:7050 -c mychannel -f /hl_config/channel/hlf--channel/mychannel.tx
 
 Fetch the channel and join it from the orderer:
 
